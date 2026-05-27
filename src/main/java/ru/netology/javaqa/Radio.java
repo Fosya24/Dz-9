@@ -3,8 +3,21 @@ package ru.netology.javaqa;
 public class Radio {
     private int stationNumber;
     private int currentVolume;
+    private int countStation = 10;
 
     public Radio() {
+    }
+
+    public Radio(int countStation) {
+        if (countStation > 0) {
+            this.countStation = countStation;
+        }
+    }
+
+    public void setCountStation(int countStation) {
+        if (countStation > 0) {
+            this.countStation = countStation;
+        }
     }
 
     public int getStationNumber() {
@@ -12,12 +25,12 @@ public class Radio {
     }
 
     public void setStationNumber(int stationNumber) {
-        if (stationNumber >= 0 && stationNumber <= 9) {
+        if (stationNumber >= 0 && stationNumber <= countStation - 1) {
             this.stationNumber = stationNumber;
         } else if (stationNumber < 0) {
             this.stationNumber = 0;
         } else {
-            this.stationNumber = 9;
+            this.stationNumber = countStation - 1;
         }
     }
 
@@ -36,7 +49,7 @@ public class Radio {
     }
 
     public void next() {
-        if (stationNumber < 9) {
+        if (stationNumber < countStation - 1) {
             stationNumber++;
         } else {
             stationNumber = 0;
@@ -47,7 +60,7 @@ public class Radio {
         if (stationNumber > 0) {
             stationNumber--;
         } else {
-            stationNumber = 9;
+            stationNumber = countStation - 1;
         }
     }
 
